@@ -23,7 +23,7 @@
 					<ul class="nav ace-nav">
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-									Admin
+									<?php echo $nama; ?>
 								<i class="ace-icon fa fa-caret-down"></i>
 							</a>
 

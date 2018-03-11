@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Customer extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -13,16 +13,16 @@ class Admin extends CI_Controller {
 		} else {
 
 			if($this->session->userdata('level')=='admin'){
-				$data['title'] = "KSS Laundry";
-				$data['subtitle'] = "Admin";
-				$data['view_sidebar'] = "layout/sidebar_admin";
-				$data['view_isi'] = "admin/v_home";
-				$this->load->view('layout/template',$data);
+				redirect(base_url('index.php/admin'));
 			} else if($this->session->userdata('level')=='kasir'){
 				redirect(base_url('index.php/kasir'));
 			} else if($this->session->userdata('level')=='customer'){
-				redirect(base_url('index.php/customer'));
-			}
+				$data['title'] = "KSS Laundry";
+				$data['subtitle'] = "Customer";
+				$data['view_sidebar'] = "layout/sidebar_customer";
+				$data['view_isi'] = "customer/v_home";
+				$this->load->view('layout/template',$data);
+			}		
 		}
 	}
 }

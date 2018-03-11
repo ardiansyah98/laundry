@@ -6,21 +6,13 @@
 
 	<ul class="nav nav-list">
 		<li class="">
-			<a href="<?php echo base_url();?>index.php/kasir">
+			<a href="<?php echo base_url();?>index.php/customer">
 				<i class="menu-icon fa fa-home"></i>
 				<span class="menu-text"> Home </span>
 			</a>
 
 			<b class="arrow"></b>
 		</li>
-
-		<li class="">
-			<a href="<?php echo base_url();?>index.php/kasir/transaksi">
-				<i class="menu-icon fa fa-check"></i>
-				<span class="menu-text">Transaksi</span>
-			</a>
-		</li>
-
 	</ul><!-- /.nav-list -->
 
 	<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

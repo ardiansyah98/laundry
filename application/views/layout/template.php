@@ -45,7 +45,11 @@
 		<![endif]-->
 
 		<style>
-			
+
+			body{
+				font-size: 14px
+			}
+
 			.ganti-pass input{
 				background: #fff;
 				display: block;
@@ -54,119 +58,6 @@
 				font-size: 15px;
 				padding: 6px 12px 6px 12px;
 
-			}
-
-			.form-wrapper {
-				background-color: #f6f6f6;
-				background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
-				background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
-				background-image: -moz-linear-gradient(top, #f6f6f6, #eae8e8);
-				background-image: -ms-linear-gradient(top, #f6f6f6, #eae8e8);
-				background-image: -o-linear-gradient(top, #f6f6f6, #eae8e8);
-				background-image: linear-gradient(top, #f6f6f6, #eae8e8);
-				border-color: #dedede #bababa #aaa #bababa;
-				border-style: solid;
-				border-width: 1px;
-				-webkit-border-radius: 10px;
-				-moz-border-radius: 10px;
-				border-radius: 10px;
-				-webkit-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-				-moz-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-				box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-				margin: 10% auto;
-				overflow: hidden;
-				padding: 8px;
-				width: 450px;
-			}
-
-			.form-wrapper #search {
-				border: 1px solid #CCC;
-				-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-				-moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-				box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-				-webkit-border-radius: 3px;
-				-moz-border-radius: 3px;
-				border-radius: 3px;
-			  color: #999;
-				float: left;
-				font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
-				height: 42px;
-				padding: 10px;
-				width: 320px;
-			}
-
-			.form-wrapper #search:focus {
-				border-color: #aaa;
-				-webkit-box-shadow: 0 1px 1px #bbb inset;
-				-moz-box-shadow: 0 1px 1px #bbb inset;
-				box-shadow: 0 1px 1px #bbb inset;
-				outline: 0;
-			}
-
-			.form-wrapper #search:-moz-placeholder,
-			.form-wrapper #search:-ms-input-placeholder,
-			.form-wrapper #search::-webkit-input-placeholder {
-				color: #999;
-				font-weight: normal;
-			}
-
-			.form-wrapper #submit {
-				background-color: #0483a0;
-				background-image: -webkit-gradient(linear, left top, left bottom, from(#31b2c3), to(#0483a0));
-				background-image: -webkit-linear-gradient(top, #31b2c3, #0483a0);
-				background-image: -moz-linear-gradient(top, #31b2c3, #0483a0);
-				background-image: -ms-linear-gradient(top, #31b2c3, #0483a0);
-				background-image: -o-linear-gradient(top, #31b2c3, #0483a0);
-				background-image: linear-gradient(top, #31b2c3, #0483a0);
-				border: 1px solid #00748f;
-				-moz-border-radius: 3px;
-				-webkit-border-radius: 3px;
-				border-radius: 3px;
-				-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-				-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-				box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-				color: #fafafa;
-				cursor: pointer;
-				height: 42px;
-				float: right;
-				font: 15px Arial, Helvetica;
-				padding: 0;
-				text-transform: uppercase;
-				text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
-				width: 100px;
-			}
-
-			.form-wrapper #submit:hover,
-			.form-wrapper #submit:focus {
-				background-color: #31b2c3;
-				background-image: -webkit-gradient(linear, left top, left bottom, from(#0483a0), to(#31b2c3));
-				background-image: -webkit-linear-gradient(top, #0483a0, #31b2c3);
-				background-image: -moz-linear-gradient(top, #0483a0, #31b2c3);
-				background-image: -ms-linear-gradient(top, #0483a0, #31b2c3);
-				background-image: -o-linear-gradient(top, #0483a0, #31b2c3);
-				background-image: linear-gradient(top, #0483a0, #31b2c3);
-			}
-
-			.form-wrapper #submit:active {
-				-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-				-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-				outline: 0;
-			}
-
-			.form-wrapper #submit::-moz-focus-inner {
-				border: 0;
-			}
-
-			#tableEdit td {
-			  padding-top:5px;
-			  padding-bottom:5px;
-			  padding-right:5px;   
-			}
-
-			#tableEdit td:first-child {
-			  padding-left:5px;
-			  padding-right:0;
 			}
 
 		</style>
@@ -180,7 +71,6 @@
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
-
 			
 			<?php $this->load->view($view_sidebar); ?>
 
@@ -197,25 +87,7 @@
 		<!-- basic scripts -->
 
 
-		<!--[if IE]>
-<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url(); ?>assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-		<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-
-		<!-- page specific plugin scripts -->
-
-		<!-- ace scripts -->
-		<script src="<?php echo base_url(); ?>assets/js/ace-elements.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/js/ace.min.js"></script>
-
-		<!-- inline scripts related to this page -->
-
-
 		<script src="<?php echo base_url(); ?>assets/js/jquery-2.1.4.min.js"></script>
-		<!-- <![endif]-->
 
 		<!--[if IE]>
 <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
@@ -224,6 +96,8 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url(); ?>assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+
+		<!-- <![endif]-->
 
 		<!-- page specific plugin scripts -->
 		<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
@@ -236,5 +110,270 @@
 		<script type="text/javascript" src="<?php echo base_url('/assets/highcharts/modules/exporting.js'); ?>"></script>
 		<script type="text/javascript" src="<?php echo base_url('/assets/highcharts/themes/grid.js'); ?>"></script>
 		<script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
+
+
+		<script type="text/javascript">
+			var table;
+			var save_method;
+
+			$(document).ready(function() {
+
+			    //datatables
+			    table = $('#table_kasir').DataTable({ 
+					"sScrollX": "100%",
+					"sScrollXInner": "190%",
+			        "processing": true, //Feature control the processing indicator.
+			        "serverSide": true, //Feature control DataTables' server-side processing mode.
+			        "order": [], //Initial no order.
+
+			        // Load data for the table's content from an Ajax source
+			        "ajax": {
+			            "url": "<?php echo site_url('kasir/ajax_list')?>",
+			            "type": "POST"
+			        },
+
+			        //Set column definition initialisation properties.
+			        "columnDefs": [
+			        { 
+			            "targets": [15], //first column / numbering column
+			            "orderable": false, //set not orderable
+			        },
+			        ],
+
+			    });
+
+			});
+
+			function tambah_transaksi()
+			{
+			    save_method = 'add';
+			    $('#form')[0].reset(); // reset form on modals
+			    $('.form-group').removeClass('has-error'); // clear error class
+			    $('.help-block').empty(); // clear error string
+			    $('#tambah_modal_form').modal('show'); // show bootstrap modal
+			    $('.modal-title').text('Tambah Transaksi'); // Set Title to Bootstrap modal title
+			}
+
+			function edit_status_cucian(id)
+			{
+			    save_method = 'update_cucian';
+			    $('#form')[0].reset(); // reset form on modals
+			    $('.form-group').removeClass('has-error'); // clear error class
+			    $('.help-block').empty(); // clear error string
+
+			    //Ajax Load data from ajax
+			    $.ajax({
+			        url : "<?php echo site_url('kasir/ajax_edit/')?>/" + id,
+			        type: "GET",
+			        dataType: "JSON",
+			        success: function(data)
+			        {
+			        	$('[name="kode_transaksi"]').val(data.kode_transaksi);
+			            $('[name="status_cucian"]').val(data.status_cucian);
+			            $('#cucian_modal_form').modal('show'); // show bootstrap modal when complete loaded
+			            $('.modal-title').text('Status Cucian'); // Set title to Bootstrap modal title
+
+			        },
+			        error: function (jqXHR, textStatus, errorThrown)
+			        {
+			            alert('Error get data from ajax');
+			        }
+			    });
+			}
+
+			function edit_status_pembayaran(id)
+			{
+			    save_method = 'update_pembayaran';
+			    $('#form2')[0].reset(); // reset form on modals
+			    $('.form-group').removeClass('has-error'); // clear error class
+			    $('.help-block').empty(); // clear error string
+
+			    //Ajax Load data from ajax
+			    $.ajax({
+			        url : "<?php echo site_url('kasir/ajax_edit/')?>/" + id,
+			        type: "GET",
+			        dataType: "JSON",
+			        success: function(data)
+			        {
+			        	$('[name="kode_transaksi"]').val(data.kode_transaksi);
+			            $('[name="status_pembayaran"]').val(data.status_pembayaran);
+			            $('#bayar_modal_form').modal('show'); // show bootstrap modal when complete loaded
+			            $('.modal-title').text('Status Pembayaran'); // Set title to Bootstrap modal title
+
+			        },
+			        error: function (jqXHR, textStatus, errorThrown)
+			        {
+			            alert('Error get data from ajax');
+			        }
+			    });
+			}
+
+			function reload_table()
+			{
+			    table.ajax.reload(null,false); //reload datatable ajax 
+			}
+
+			function save()
+			{
+			    $('#btnSave').text('Saving...'); //change button text
+			    $('#btnSave').attr('disabled',true); //set button disable 
+			    var url;
+			    if(save_method=="update_cucian")
+			    	url = "<?php echo site_url('kasir/ajax_update_cucian')?>";
+			    else if(save_method=="update_pembayaran")
+			    	url = "<?php echo site_url('kasir/ajax_update_pembayaran')?>";
+
+			    // ajax adding data to database
+			    var data_serialize;
+			    if(save_method=="update_cucian")
+			    	data_serialize = $('#form').serialize();
+			    else if(save_method=="update_pembayaran")
+			    	data_serialize = $('#form2').serialize();
+
+			    $.ajax({
+			        url : url,
+			        type: "POST",
+			        data: data_serialize,
+			        dataType: "JSON",
+			        success: function(data)
+			        {
+
+			            if(data.status) //if success close modal and reload ajax table
+			            {
+			            	if(save_method=="update_cucian")
+			            		$('#cucian_modal_form').modal('hide');
+						    else if(save_method=="update_pembayaran")
+						    	$('#bayar_modal_form').modal('hide');
+			                
+			                reload_table();
+			            }
+
+			            $('#btnSave').text('Save'); //change button text
+			            $('#btnSave').attr('disabled',false); //set button enable 
+
+
+			        },
+			        error: function (jqXHR, textStatus, errorThrown)
+			        {
+			            alert('Error adding / update data');
+			            $('#btnSave').text('Save'); //change button text
+			            $('#btnSave').attr('disabled',false); //set button enable 
+
+			        }
+			    });
+			}
+
+			function delete_transaksi(id)
+			{
+			    if(confirm('Are you sure delete this data?'))
+			    {
+			        // ajax delete data to database
+			        $.ajax({
+			            url : "<?php echo site_url('kasir/ajax_delete')?>/"+id,
+			            type: "POST",
+			            dataType: "JSON",
+			            success: function(data)
+			            {
+			                //if success reload ajax table
+			                reload_table();
+			            },
+			            error: function (jqXHR, textStatus, errorThrown)
+			            {
+			                alert('Error deleting data');
+			            }
+			        });
+
+			    }
+			}
+
+		</script>
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="cucian_modal_form" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form">
+                    <input type="hidden" value="" name="kode_transaksi"/> 
+                    <div class="form-body">
+                        <div class="form-group">
+                        	<center>
+                        		<table style="text-align:center" width="85%">
+	                        		<tr>
+	                        			<td>
+	                            			<label>Status Cucian</label></td>
+	                        			<td>
+	                        				<select name="status_cucian">
+			                                	<option value="Diterima">Diambil</option>
+			                                	<option value="Proses">Proses</option>
+			                                	<option value="Selesai">Selesai</option>
+			                                	<option value="Diambil">Diambil</option>
+			                                </select>
+			                            </td>
+	                        		</tr>
+	                        	</table>
+                        	</center>
+                            <div class="col-md-12">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="bayar_modal_form" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form2">
+                    <input type="hidden" value="" name="kode_transaksi"/> 
+                    <div class="form-body">
+                        <div class="form-group">
+                        	<center>
+                        		<table style="text-align:center" width="85%">
+	                        		<tr>
+	                        			<td>
+	                            			<label>Status Pembayaran</label></td>
+	                        			<td>
+	                        				<select name="status_pembayaran">
+			                                	<option value="Belum">Belum</option>
+			                                	<option value="Sudah">Sudah</option>
+			                                </select>
+			                            </td>
+	                        		</tr>
+	                        	</table>
+                        	</center>
+                            <div class="col-md-12">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
 	</body>
 </html>
