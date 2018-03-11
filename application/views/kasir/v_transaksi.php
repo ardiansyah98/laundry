@@ -18,7 +18,7 @@
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
 
-					<button class="btn btn-success" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah</button>
+					<button class="btn btn-success" onclick="tambah_transaksi()"><i class="glyphicon glyphicon-plus"></i> Tambah</button>
         			<button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
 			        <br>
 			        <br>

@@ -135,7 +135,7 @@
 			        //Set column definition initialisation properties.
 			        "columnDefs": [
 			        { 
-			            "targets": [15], //first column / numbering column
+			            "targets": [14,15], //first column / numbering column
 			            "orderable": false, //set not orderable
 			        },
 			        ],
@@ -147,11 +147,15 @@
 			function tambah_transaksi()
 			{
 			    save_method = 'add';
-			    $('#form')[0].reset(); // reset form on modals
+			    $('#form3')[0].reset(); // reset form on modals
 			    $('.form-group').removeClass('has-error'); // clear error class
 			    $('.help-block').empty(); // clear error string
 			    $('#tambah_modal_form').modal('show'); // show bootstrap modal
 			    $('.modal-title').text('Tambah Transaksi'); // Set Title to Bootstrap modal title
+
+			    var now = new Date();
+			    var x = now.getFullYear()+''+(now.getMonth()+1)+''+now.getDate()+''+now.getHours()+''+now.getMinutes()+''+now.getMilliseconds();
+			    $('[name="kode_transaksi"]').val(x);
 			}
 
 			function edit_status_cucian(id)
@@ -375,5 +379,155 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="tambah_modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form3">
+                    <div class="form-body">
+                        <div class="form-group ">
+                            <center>
+                            	<table style="width:90%" class="table" cellspacing="0">
+                            		<tr>
+                            			<td>
+                            				Kode Transaksi
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="kode_transaksi" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Nama Customer
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="nama_customer" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Paket Cucian
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="paket">
+                            					<?php 
+
+                            					?>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Harga Per Kilo
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="harga" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Berat (kg)
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="berat" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Diskon
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="diskon" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Kasir
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="kasir" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Cabang
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="cabang">
+                            					<?php 
+                            					?>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Bayar Sekarang
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="bayar">
+                            					<option value="Sudah">Ya</option>
+                            					<option value="Belum" selected>Tidak</option>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				
+                            			</td>
+                            			<td>
+                            				
+                            			</td>
+                            			<td>
+                            			</td>
+                            		</tr>
+                            	</table>
+                            </center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+
 	</body>
 </html>

@@ -8,7 +8,7 @@
 
 <h3>Customer</h3>
 
-<p>Customer hanya dapat mengecek status cuciannya menggunakan kode transaksi (harus login) </p>
+<p>Customer hanya dapat mengecek status cuciannya menggunakan kode transaksi </p>
 
 <h3>Kasir</h3>
 
