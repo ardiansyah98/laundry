@@ -5,9 +5,9 @@ class M_kasir extends CI_Model {
 
 	var $table = 'transaksi';
 	//set column field database for datatable orderable
-	var $column_order = array(null, 'kode_transaksi','nama_paket','harga_paket','id_customer','berat','diskon','id_kasir','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar'); 
+	var $column_order = array(null, 'kode_transaksi','nama_paket','harga_paket','nama_customer','berat','diskon','id_kasir','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar'); 
 	//set column field database for datatable searchable 
-	var $column_search = array('kode_transaksi','nama_paket','harga_paket','id_customer','berat','diskon','id_kasir','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar'); 
+	var $column_search = array('kode_transaksi','nama_paket','harga_paket','nama_customer','berat','diskon','id_kasir','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar'); 
 	// default order 
 	var $order = array('id_transaksi' => 'asc'); 
 
@@ -96,6 +96,16 @@ class M_kasir extends CI_Model {
 	{
 		$this->db->where('kode_transaksi', $kode_transaksi);
 		$this->db->delete($this->table);
+	}
+
+	function get_paket(){
+		$hasil=$this->db->query("SELECT * FROM paket");
+		return $hasil;
+	}
+
+	function get_harga_paket($id){
+		$hasil=$this->db->query("SELECT * FROM paket WHERE id_paket='$id'");
+		return $hasil->result();
 	}
 
 }

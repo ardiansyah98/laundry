@@ -20,8 +20,6 @@ class Admin extends CI_Controller {
 				$this->load->view('layout/template',$data);
 			} else if($this->session->userdata('level')=='kasir'){
 				redirect(base_url('index.php/kasir'));
-			} else if($this->session->userdata('level')=='customer'){
-				redirect(base_url('index.php/customer'));
 			}
 		}
 	}

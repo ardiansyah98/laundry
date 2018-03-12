@@ -27,10 +27,9 @@ class Kasir extends CI_Controller {
 				$data['nama'] = $nama;
 				$data['view_sidebar'] = "layout/sidebar_kasir";
 				$data['view_isi'] = "kasir/v_home";
+				$data['paket'] = $this->m_kasir->get_paket(); 
 				$this->load->view('layout/template',$data);
 				
-			} else if($this->session->userdata('level')=='customer'){
-				redirect(base_url('index.php/customer'));
 			}
 
 		}
@@ -56,13 +55,11 @@ class Kasir extends CI_Controller {
 				$data['nama'] = $nama;
 				$data['view_sidebar'] = "layout/sidebar_kasir";
 				$data['view_isi'] = "kasir/v_transaksi";
+				$data['paket'] = $this->m_kasir->get_paket(); 
 				
-				
+			
 				$this->load->view('layout/template',$data);
-			} else if($this->session->userdata('level')=='customer'){
-				redirect(base_url('index.php/customer'));
 			}
-
 		}
 
 	}
@@ -77,15 +74,7 @@ class Kasir extends CI_Controller {
 
 			$row[] = $no;
 			$row[] = $trans->kode_transaksi;
-
-			$get1 = $this->m_login->cek('identitas', array('id_user' => $trans->id_customer))->result();
-
-			foreach ($get1 as $x) {
-				$nama = $x->nama;
-			}
-			
-			$row[] = $nama;
-
+			$row[] = $trans->nama_customer;
 			$row[] = $trans->nama_paket;
 			$row[] = $trans->harga_paket;
 			$row[] = $trans->berat;
@@ -223,5 +212,11 @@ class Kasir extends CI_Controller {
 	{
 		$this->m_kasir->delete_by_kode($kode_transaksi);
 		echo json_encode(array("status" => TRUE));
+	}
+
+	function get_harga_paket(){
+		$id=$this->input->post('id_paket');
+		$data=$this->m_kasir->get_harga_paket($id);
+		echo json_encode($data);
 	}
 }

@@ -111,8 +111,247 @@
 		<script type="text/javascript" src="<?php echo base_url('/assets/highcharts/themes/grid.js'); ?>"></script>
 		<script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.min.js"></script>
 
+<!-- Bootstrap modal -->
+<div class="modal fade" id="cucian_modal_form" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form">
+                    <input type="hidden" value="" name="kode_transaksi"/> 
+                    <div class="form-body">
+                        <div class="form-group">
+                        	<center>
+                        		<table style="text-align:center" width="85%">
+	                        		<tr>
+	                        			<td>
+	                            			<label>Status Cucian</label></td>
+	                        			<td>
+	                        				<select name="status_cucian">
+			                                	<option value="Diterima">Diterima</option>
+			                                	<option value="Proses">Proses</option>
+			                                	<option value="Selesai">Selesai</option>
+			                                	<option value="Diambil">Diambil</option>
+			                                </select>
+			                            </td>
+	                        		</tr>
+	                        	</table>
+                        	</center>
+                            <div class="col-md-12">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
 
-		<script type="text/javascript">
+<!-- Bootstrap modal -->
+<div class="modal fade" id="bayar_modal_form" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form2">
+                    <input type="hidden" value="" name="kode_transaksi"/> 
+                    <div class="form-body">
+                        <div class="form-group">
+                        	<center>
+                        		<table style="text-align:center" width="85%">
+	                        		<tr>
+	                        			<td>
+	                            			<label>Status Pembayaran</label></td>
+	                        			<td>
+	                        				<select name="status_pembayaran">
+			                                	<option value="Belum">Belum</option>
+			                                	<option value="Sudah">Sudah</option>
+			                                </select>
+			                            </td>
+	                        		</tr>
+	                        	</table>
+                        	</center>
+                            <div class="col-md-12">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="tambah_modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form3">
+                    <div class="form-body">
+                        <div class="form-group ">
+                            <center>
+                            	<table style="width:90%" class="table" cellspacing="0">
+                            		<tr>
+                            			<td>
+                            				Kode Transaksi
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="kode_transaksi" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Nama Customer
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="nama_customer" type="text" value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Paket Cucian
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="id_paket" id="id_paket">
+                            					<option>Pilih Paket</option>
+                            					<?php foreach($paket->result() as $row):?>
+						                    		<option value="<?php echo $row->id_paket;?>">
+						                    			<?php echo $row->nama_paket;?>		
+						                    		</option>
+						                    	<?php endforeach;?>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Harga Per Kg
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="harga_paket" id="harga_paket" type="text" readonly value="0">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Berat (kg)
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="berat" type="text" value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Diskon
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="diskon" type="text" value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Kasir
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<input name="kasir" type="text" readonly value="">
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Cabang
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="cabang">
+                            					<?php 
+                            					?>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				Bayar Sekarang
+                            			</td>
+                            			<td>
+                            				&nbsp;&nbsp;&nbsp;
+                            			</td>
+                            			<td>
+                            				<select name="bayar">
+                            					<option value="Sudah">Ya</option>
+                            					<option value="Belum" selected>Tidak</option>
+                            				</select>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td>
+                            				
+                            			</td>
+                            			<td>
+                            				
+                            			</td>
+                            			<td>
+                            			</td>
+                            		</tr>
+                            	</table>
+                            </center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+
+<script type="text/javascript">
 			var table;
 			var save_method;
 
@@ -141,6 +380,25 @@
 			        ],
 
 			    });
+
+			    $('#id_paket').change(function(){
+					var id=$(this).val();
+					$.ajax({
+						url : "<?php echo base_url();?>index.php/kasir/get_harga_paket",
+						method : "POST",
+						data : {id_paket: id},
+						async : false,
+				        dataType : 'json',
+						success: function(data){
+				            var i;
+				            for(i=0; i<data.length; i++){
+				                $('#harga_paket').val(data[i].harga);
+				            }
+				            
+							
+						}
+					});
+				});
 
 			});
 
@@ -291,242 +549,6 @@
 			}
 
 		</script>
-
-<!-- Bootstrap modal -->
-<div class="modal fade" id="cucian_modal_form" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title"></h3>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form">
-                    <input type="hidden" value="" name="kode_transaksi"/> 
-                    <div class="form-body">
-                        <div class="form-group">
-                        	<center>
-                        		<table style="text-align:center" width="85%">
-	                        		<tr>
-	                        			<td>
-	                            			<label>Status Cucian</label></td>
-	                        			<td>
-	                        				<select name="status_cucian">
-			                                	<option value="Diterima">Diambil</option>
-			                                	<option value="Proses">Proses</option>
-			                                	<option value="Selesai">Selesai</option>
-			                                	<option value="Diambil">Diambil</option>
-			                                </select>
-			                            </td>
-	                        		</tr>
-	                        	</table>
-                        	</center>
-                            <div class="col-md-12">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
-
-<!-- Bootstrap modal -->
-<div class="modal fade" id="bayar_modal_form" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title"></h3>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form2">
-                    <input type="hidden" value="" name="kode_transaksi"/> 
-                    <div class="form-body">
-                        <div class="form-group">
-                        	<center>
-                        		<table style="text-align:center" width="85%">
-	                        		<tr>
-	                        			<td>
-	                            			<label>Status Pembayaran</label></td>
-	                        			<td>
-	                        				<select name="status_pembayaran">
-			                                	<option value="Belum">Belum</option>
-			                                	<option value="Sudah">Sudah</option>
-			                                </select>
-			                            </td>
-	                        		</tr>
-	                        	</table>
-                        	</center>
-                            <div class="col-md-12">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
-
-<!-- Bootstrap modal -->
-<div class="modal fade" id="tambah_modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title"></h3>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form3">
-                    <div class="form-body">
-                        <div class="form-group ">
-                            <center>
-                            	<table style="width:90%" class="table" cellspacing="0">
-                            		<tr>
-                            			<td>
-                            				Kode Transaksi
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="kode_transaksi" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Nama Customer
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="nama_customer" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Paket Cucian
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<select name="paket">
-                            					<?php 
-
-                            					?>
-                            				</select>
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Harga Per Kilo
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="harga" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Berat (kg)
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="berat" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Diskon
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="diskon" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Kasir
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<input name="kasir" type="text" readonly value="">
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Cabang
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<select name="cabang">
-                            					<?php 
-                            					?>
-                            				</select>
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				Bayar Sekarang
-                            			</td>
-                            			<td>
-                            				&nbsp;&nbsp;&nbsp;
-                            			</td>
-                            			<td>
-                            				<select name="bayar">
-                            					<option value="Sudah">Ya</option>
-                            					<option value="Belum" selected>Tidak</option>
-                            				</select>
-                            			</td>
-                            		</tr>
-                            		<tr>
-                            			<td>
-                            				
-                            			</td>
-                            			<td>
-                            				
-                            			</td>
-                            			<td>
-                            			</td>
-                            		</tr>
-                            	</table>
-                            </center>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- End Bootstrap modal -->
 
 
 	</body>

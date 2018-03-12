@@ -15,8 +15,6 @@ class Login extends CI_Controller {
 				redirect(base_url('index.php/admin'));
 			else if($level=='kasir')
 				redirect(base_url('index.php/kasir'));
-			else if($level=='customer')
-				redirect(base_url('index.php/customer'));
 		} else {
 			$this->load->view('v_login');
 		}
