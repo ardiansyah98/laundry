@@ -32,3 +32,14 @@ Owner dapat:<br>
 7. Melakukan rekapitulasi<br>
 </p>
 
+
+<h3>Class</h3>
+<ul>
+	<li>User : fungsi2 umum user (login,logut,ubah pass dll)</li>
+	<li>Pkios : Pegawai Kios </li>
+	<li>Pwork: pegawai Workshop</li>
+	<li>Mkios : Manager Kios</li>
+	<li>Mwork : Manager workshop</li>
+	<li>Owner : pemiliki toko</li>
+</ul>
+
