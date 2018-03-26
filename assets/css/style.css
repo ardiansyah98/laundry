@@ -1,0 +1,187 @@
+@font-face {
+    font-family: buntaro;
+    src: url('../font/DK_Buntaro.otf');
+}
+@font-face {
+    font-family: freehand;
+    src: url('../font/tt1018m_.ttf');
+}
+@font-face {
+    font-family: geometri;
+    src: url('../font/tt0524m_.ttf');
+}
+.geometri{
+	font-family: geometri;
+}
+.freehand{
+	font-family: freehand;
+}
+.buntaro{
+	font-family: buntaro;
+}
+
+
+.nav-tabs {
+    border-bottom: 4px solid #ec3253;
+}
+.nav-tabs>li a {
+    color: #ec3253;
+    padding: 10px 30px;
+    font-size: 1.5em;
+    border-radius: 5px 5px 0px 0px;
+    font-family: freehand !important;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #ec3253;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    
+}
+
+
+.header{
+	width: 100%;
+	height: 10em;
+	/*padding-top:  20px;*/
+	background-image: url(./assets/image/rm.png);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-bottom: 50px;
+
+}
+
+.nama-rumah-makan{
+	background-color:#ec3253;
+	color: white;
+	font-size: 1.8em;
+	padding: 10px;
+	
+	border-radius: 5px;
+}
+.nama-rumah-makan h2{
+  margin:0px 5px;
+  font-family: freehand !important;
+}
+.nama-rumah-makan select{
+  /*margin:0px 5px;*/
+  font-family: geometri !important;
+}
+
+
+.gap{
+	margin: 30px 0;
+	content: '';
+	/*padding: */
+}
+
+.mbr-figure {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%; 
+
+}
+  .mbr-figure img, .mbr-figure iframe {
+    display: block;
+    width: 100%; }
+  .mbr-figure .mbr-figure-caption {
+    background: #2e2e2e;
+    color: #fff;
+    font-family: geometri;
+    padding: 1.5rem 0;
+    text-align: center;
+    width: 100%; 
+}
+  .mbr-figure .mbr-figure-caption-over {
+        background-color: rgba(0,0,0, 0.6);
+
+    bottom: 0;
+    position: absolute; 
+}
+.detail-info{
+    max-height: 12em;
+    min-height: 10em;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.detail-img{
+      text-align: center;
+      font-family: geometri;
+      font-size: 1.2em;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+ .list{
+ 	margin-bottom: 20px;
+ }
+
+ .well{
+ 	padding: 0px;
+ 	background: none;
+ 	border:none;
+ 	box-shadow: none;
+ 	font-family: geometri;
+ 	/*display: inherit;*/
+ }
+ .well-header{
+ 	border-bottom: 2px solid #ec3253;
+ 	margin-top: 0px;
+ 	display: inherit;
+ }
+ .well-body{
+ 	font-size: 1.2em;
+ 	display: inherit;
+ }
+
+ .modal-menu{
+ 	background: none;
+ 	box-shadow: none;
+ 	background-clip: none;
+ 	outline: none;
+ 	border: none;
+ 	border-radius: none;
+ }
+ .modal-menu .modal-header{
+ 	background-color: #ec3253;
+ 	color: white;
+ 	font-family: geometri;
+ }
+ .modal-menu .modal-body{
+ 	background-color: #fff;
+ 	color: #000;
+ 	font-family: geometri;
+ 	padding: 0px;
+ 	border: none;
+ }
+ .modal-menu .modal-body .right{
+ 	padding-left: 5px;
+ }
+ .modal-menu .modal-body .left{
+ 	padding-right: 5px;
+ }
+ .modal-menu .modal-body p{
+ 	padding: 10px;
+ 	font-family: geometri;
+ 	font-size: 1.2em;
+ }
+  .modal-menu .modal-body button{
+ 	
+ 	font-family: geometri;
+ 	font-size: 1.2em;
+ 	float: right;
+ 	bottom: 10px;
+ 	right: 10px;
+ 	position: absolute;
+ 	margin: 5px;
+ }
+
+

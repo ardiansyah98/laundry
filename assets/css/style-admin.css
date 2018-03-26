@@ -1,0 +1,31 @@
+@font-face {
+    font-family: buntaro;
+    src: url('../font/DK_Buntaro.otf');
+}
+@font-face {
+    font-family: freehand;
+    src: url('../font/tt1018m_.ttf');
+}
+@font-face {
+    font-family: geometri;
+    src: url('../font/tt0524m_.ttf');
+}
+.geometri{
+	font-family: geometri;
+}
+.freehand{
+	font-family: freehand;
+}
+.buntaro{
+	font-family: buntaro;
+}
+
+.gap{
+	margin: 30px 0;
+	content: '';
+	/*padding: */
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
