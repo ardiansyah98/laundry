@@ -29,7 +29,7 @@ class Pkios extends CI_Controller {
 	function home(){
 		$user=$this->check_user();
 		$cabang=$this->session->userdata("cabang");
-		$this->load->view("test");
+		$this->load->view("tes");
 	}
 	
 	function input_transaksi(){
@@ -215,13 +215,47 @@ class Pkios extends CI_Controller {
 	}
 
 
+	function list_transaksi(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		$this->load->view("kios/list-transaksi");
+	}
 
+	function ajax_list(){
+		$list = $this->DbKios->get_datatables();
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $trans) {
+			$no++;
+			$row = array();
 
+			$row[] = $no;
+			$row[] = $trans->id_transaksi;
+			$row[] = $trans->id_paket;
+			$row[] = $trans->jenis_laundry;
+			$row[] = $trans->berat;
+			$row[] = $trans->diskon;
+			$row[] = $trans->id_user;
+			$row[] = $trans->id_cabang;
+			$row[] = $trans->status_cucian;
+			$row[] = $trans->tgl_diterima;
+			$row[] = $trans->tgl_diambil;
+			$row[] = $trans->status_pembayaran;
+			$row[] = $trans->tgl_bayar;
+			$row[] = $trans->keterangan;
 
+			
 
+			$data[] = $row;
+		}
 
-
-
-
-
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->DbKios->count_all(),
+						"recordsFiltered" => $this->DbKios->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
+	}
 }

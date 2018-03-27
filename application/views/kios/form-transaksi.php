@@ -31,11 +31,11 @@
 
       <h1>
         Dashboard
-        <small>Control panel</small>
+        <small>Tambah Cucian</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Tambah Cucian</li>
       </ol>
     </section>
 
@@ -92,7 +92,7 @@
 
                       
                       <tr id="input">
-                        <td>0</td>
+                        <td>1</td>
                         <td>
                           <select class="form-control select2" id="input_cucian" style="width: 100%;">
                             <?php foreach ($pilihan_cucian as $option) :?>
@@ -153,56 +153,56 @@
   var list=1;
   $(".select2").select2();
 
-$("#tanggal").datepicker({
-  "setDate": new Date(),
-  "autoclose" : true,
-  "format":"yyyy-mm-dd",
-  "timePicker": true
-  // "use24hours": true
-});
+  $("#tanggal").datepicker({
+    "setDate": new Date(),
+    "autoclose" : true,
+    "format":"yyyy-mm-dd",
+    "timePicker": true
+    // "use24hours": true
+  });
 
   var input_jenis=document.getElementsByName("jenis_cucian[]");
   var input_jumlah=document.getElementsByName("jumlah_cucian[]");
 
-function tambah_cucian(){
-  var jenis_cucian=$("#input_cucian").val();
-  var jumlah_cucian=$("#input_jumlah").val();
-  if(jumlah_cucian>0){
-    var field=document.getElementById("field");
-    var copy=field.cloneNode(true);
-    var input=copy.getElementsByTagName("input");
-    input[0].value = jenis_cucian;
-    input[1].value = jumlah_cucian;
+  function tambah_cucian(){
+    var jenis_cucian=$("#input_cucian").val();
+    var jumlah_cucian=$("#input_jumlah").val();
+    if(jumlah_cucian>0){
+      var field=document.getElementById("field");
+      var copy=field.cloneNode(true);
+      var input=copy.getElementsByTagName("input");
+      input[0].value = jenis_cucian;
+      input[1].value = jumlah_cucian;
+      var target=document.getElementById("list");
+      var template=document.getElementById("input");
+      target.insertBefore(copy,template);
+      reNumber();
+    }
+  }
+
+  function hapus_cucian(node){
+    var list=document.getElementById("list");
+    var row=node.parentElement.parentElement;
+    list.removeChild(row);
+  }
+
+  function reNumber(){
+    var no=1;
     var target=document.getElementById("list");
-    var template=document.getElementById("input");
-    target.insertBefore(copy,template);
-    reNumber();
+    var number=target.getElementsByTagName("tr");
+    for (var i = 0; i < number.length; i++) {
+      number[i].cells[0].innerHTML=no;
+      // alert(number[i].cells.length);
+      no++;
+    }
+    // alert(number.length);
   }
-}
 
-function hapus_cucian(node){
-  var list=document.getElementById("list");
-  var row=node.parentElement.parentElement;
-  list.removeChild(row);
-}
 
-function reNumber(){
-  var no=1;
-  var target=document.getElementById("list");
-  var number=target.getElementsByTagName("tr");
-  for (var i = 0; i < number.length; i++) {
-    number[i].cells[0].innerHTML=no;
-    // alert(number[i].cells.length);
-    no++;
+  function check_input(){
+
   }
-  // alert(number.length);
-}
-
-
-function check_input(){
-
-}
-// });
+  // });
 </script>
 
 

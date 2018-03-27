@@ -41,6 +41,11 @@
 
 <script src="<?php echo base_url('assets/adminlte/bower_components/select2/dist/js/select2.full.min.js')?>"></script>
 
+<script src="<?php echo base_url('assets/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')?>"></script>
+
+<script src="<?php echo base_url('assets/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
+
+
   <!-- HTML5 Shim and Respond.js') ?> IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js') ?> doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

@@ -26,7 +26,15 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="<?php if($this->uri->segment(2)=="input_transaksi" || $this->uri->segment(2)=="" ){echo "active";}?>">
           <a href="<?php echo site_url('Pkios/input_transaksi/')?>" >
-            <i class="fa  fa-user-plus"></i> <span>Input </span>
+            <i class="fa  fa-user-plus"></i> <span>Input</span>
+            <!-- <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span> -->
+          </a>
+        </li>
+        <li class="<?php if($this->uri->segment(2)=="list_transaksi" || $this->uri->segment(2)=="" ){echo "active";}?>">
+          <a href="<?php echo site_url('Pkios/list_transaksi/')?>" >
+            <i class="fa  fa-list"></i> <span>List</span>
             <!-- <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span> -->

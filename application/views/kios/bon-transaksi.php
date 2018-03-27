@@ -35,11 +35,12 @@
 
       <h1>
         Dashboard
-        <small>Input Cucian</small>
+        <small>Tambah Cucian</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Tambah Cucian</a></li>
+        <li class="active">Bukti Pembayaran</li>
       </ol>
     </section>
 
