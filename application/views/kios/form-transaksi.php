@@ -29,17 +29,17 @@
 
       <!-- heading -->
 
-      <h1>
+      <!-- <h1>
         Dashboard
         <small>Tambah Cucian</small>
-      </h1>
+      </h1> -->
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Tambah Cucian</li>
+        <li><a><i class="fa fa-home"></i>Dashboard</a></li>
+        <li class="active">Tambah Transaksi</li>
       </ol>
     </section>
 
-    <section class="content">
+    <section style="margin-top: 2%" class="content">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <div class="box box-primary">

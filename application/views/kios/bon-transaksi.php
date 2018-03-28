@@ -33,18 +33,19 @@
 
       <!-- heading -->
 
-      <h1>
+      <!-- <h1>
         Dashboard
         <small>Tambah Cucian</small>
-      </h1>
+      </h1> -->
+      
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#"><i class="fa fa-dashboard"></i> Tambah Cucian</a></li>
+        <li><a><i class="fa fa-home"></i> Dashboard</a></li>
+        <li>Transaksi</li>
         <li class="active">Bukti Pembayaran</li>
       </ol>
     </section>
 
-    <section class="content">
+    <section style="margin-top: 1%" class="content">
      <section class="invoice">
       <!-- title row -->
       <div class="row">
@@ -224,8 +225,6 @@
         $("#modal-harga").html(sisa);
         $("#modal-btn-bayar").attr("href",link);
   }
-
-
 
 </script>
 

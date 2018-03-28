@@ -4,13 +4,13 @@
 */
 class DbKios extends CI_Model
 {
-	var $table = 'transaksi';
+	var $table = 'paket';
 	//set column field database for datatable orderable
-	var $column_order = array(null, 'id_transaksi','id_paket','jenis_laundry','berat','diskon','id_user','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar','keterangan'); 
+	var $column_order = array(null, 'id_paket','id_cabang','kode_paket','nama_pelanggan','tlp_pelanggan','harga','tgl_masuk','status_pembayaran_paket','status_pengambilan_paket'); 
 	//set column field database for datatable searchable 
-	var $column_search = array('id_transaksi','id_paket','jenis_laundry','berat','diskon','id_user','id_cabang','status_cucian','tgl_diterima','tgl_diambil','status_pembayaran','tgl_bayar','keterangan'); 
+	var $column_search = array('id_paket','id_cabang','kode_paket','nama_pelanggan','tlp_pelanggan','harga','tgl_masuk','status_pembayaran_paket','status_pengambilan_paket'); 
 	// default order 
-	var $order = array('id_transaksi' => 'asc'); 
+	var $order = array('id_paket' => 'asc'); 
 
 	private function _get_datatables_query()
 	{	
@@ -47,11 +47,12 @@ class DbKios extends CI_Model
 		}
 	}
 
-	function get_datatables()
+	function get_datatables($where)
 	{
 		$this->_get_datatables_query();
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
+		$this->db->where('id_cabang', $where);
 		$query = $this->db->get();
 		return $query->result();
 	}

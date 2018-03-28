@@ -55,6 +55,7 @@ class Pkios extends CI_Controller {
 			$kode_paket=$this->generate_kode_paket($nama);
 
 			$data_paket=array("nama_pelanggan"=>$nama,
+						"id_cabang" => $cabang->id_cabang,
 						"kode_paket" => $kode_paket,
 						"tgl_masuk"=>$tanggal,
 						"tlp_pelanggan"=>$tlp);
@@ -93,7 +94,7 @@ class Pkios extends CI_Controller {
 		$cabang=$this->session->userdata("cabang");
 		$time=date("ymjs");
 		$cab=$cabang->kode_cabang;
-		$kode=$cab.$time.substr($nama,4);
+		$kode=$cab.$time;
 		return $kode;
 	}
 
@@ -167,7 +168,6 @@ class Pkios extends CI_Controller {
 		$this->load->view("kios/bon-transaksi",$send_to_view);
 	}
 
-
 	//set pembayaran single/all
 	function pembayaran_transaksi($index){
 		$jenis=explode("-", $index);
@@ -222,7 +222,8 @@ class Pkios extends CI_Controller {
 	}
 
 	function ajax_list(){
-		$list = $this->DbKios->get_datatables();
+		$cabang=$this->session->userdata("cabang");
+		$list = $this->DbKios->get_datatables($cabang->id_cabang);
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $trans) {
@@ -230,21 +231,15 @@ class Pkios extends CI_Controller {
 			$row = array();
 
 			$row[] = $no;
-			$row[] = $trans->id_transaksi;
 			$row[] = $trans->id_paket;
-			$row[] = $trans->jenis_laundry;
-			$row[] = $trans->berat;
-			$row[] = $trans->diskon;
-			$row[] = $trans->id_user;
-			$row[] = $trans->id_cabang;
-			$row[] = $trans->status_cucian;
-			$row[] = $trans->tgl_diterima;
-			$row[] = $trans->tgl_diambil;
-			$row[] = $trans->status_pembayaran;
-			$row[] = $trans->tgl_bayar;
-			$row[] = $trans->keterangan;
-
-			
+			// $row[] = $trans->id_cabang;
+			$row[] = $trans->kode_paket;
+			$row[] = $trans->nama_pelanggan;
+			$row[] = $trans->tlp_pelanggan;
+			$row[] = $trans->harga;
+			$row[] = $trans->tgl_masuk;
+			$row[] = $trans->status_pembayaran_paket;
+			$row[] = $trans->status_pengambilan_paket;
 
 			$data[] = $row;
 		}
