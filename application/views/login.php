@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url('assets/adminlte/index2.html')?>"><b>Mr GOOD</b> Laundry</a>
+    <a href="<?php echo base_url('assets/adminlte/index2.html')?>"><b>Mr GOOD</b>Laundry</a>
   </div>
   <!-- /.login-logo -->
 
@@ -39,7 +39,7 @@
     <p><?php echo validation_errors()?></p>
     <form action="<?php echo site_url('User/Login/')?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="user" value="<?php echo set_value('user'); ?>">
+        <input type="text" class="form-control" placeholder="User" name="user" value="<?php echo set_value('user'); ?>">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
         <p><?php echo form_error("user")?></p>
       </div>

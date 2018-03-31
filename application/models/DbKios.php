@@ -4,6 +4,7 @@
 */
 class DbKios extends CI_Model
 {
+	
 	var $table = 'paket';
 	//set column field database for datatable orderable
 	var $column_order = array(null, 'id_paket','id_cabang','kode_paket','nama_pelanggan','tlp_pelanggan','harga','tgl_masuk','status_pembayaran_paket','status_pengambilan_paket'); 

@@ -23,6 +23,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required', array('required'=>'%s harus diisi'));
 		if($this->form_validation->run() == FALSE){
 			echo $user.":".$pass;
+			// echo "<script>alert('error');</script>";
 			// printr(validation_errors());
 			$this->load->view('login');
 		}else{
@@ -33,7 +34,7 @@ class User extends CI_Controller {
 			$data=$this->DbCore->get_data_2param("user","username",$user,"password",$pass)->row();
 			
 			if($data == null){
-				echo "<script>alert('Username atau password salah');</script>";
+				echo "<script>alert('akun atau password salah');</script>";
 				$this->load->view('login');
 			}else{
 				$this->session->set_userdata("user",$data);
@@ -41,25 +42,25 @@ class User extends CI_Controller {
 				$cabang=$this->DbCore->get_data_1param("cabang","id_cabang",$data->id_cabang)->row();
 				$this->session->set_userdata("cabang",$cabang);
 				switch ($data->level) {
-					case '1':
-						redirect("Pkios","refresh");
+					case 1:
+						redirect("Kios","refresh");
 						break;
-					case '2':
-						redirect('Pwork');
-						break;
-					case '3':
-						redirect('Mkios');
-						break;
-					case '4':
-						redirect("Mwork");
-						break;
-					case '5':
-						redirect("Owner");
-						break;
+						case 2:
+							redirect('Pwork');
+							break;
+							case 3:
+								redirect('Mkios');
+								break;
+								case 4:
+									redirect("Mwork");
+									break;
+									case 5:
+										redirect("Owner");
+										break;
 					
 					default:
-						// $this->logout();
-					break;
+						$this->logout();
+						break;
 				}
 			}
 		}
@@ -141,6 +142,12 @@ class User extends CI_Controller {
 
 		echo  json_encode($data,JSON_PRETTY_PRINT);
 	}
+
+
+
+
+
+
 
 
 }

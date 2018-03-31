@@ -22,7 +22,7 @@
 <?php $this->load->view("template/navbar");?>
 
 <!-- side bar -->
-<?php $this->load->view("template/sidebar");?>
+<?php $this->load->view("kios/sidebar-kios");?>
   
   <!-- Left side column. contains the logo and sidebar -->
 
@@ -94,7 +94,7 @@
           "order": [], 
 
           "ajax": {
-              "url": "<?php echo site_url('Pkios/ajax_list')?>",
+              "url": "<?php echo site_url('Kios/ajax_list')?>",
               "type": "POST"
           },
 
