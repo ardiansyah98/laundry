@@ -1,0 +1,11 @@
+
+
+-- Triggers `transaksi`
+--
+DELIMITER $$
+CREATE TRIGGER `Diskon_kuota` AFTER INSERT ON `transaksi` FOR EACH ROW BEGIN
+UPDATE diskon
+SET kuota = kuota-1 WHERE id_diskon=new.diskon;
+end
+$$
+DELIMITER ;
