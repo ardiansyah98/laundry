@@ -46,7 +46,7 @@ class User extends CI_Controller {
 						redirect("Kios","refresh");
 						break;
 						case 2:
-							redirect('Pwork');
+							redirect('Workshop');
 							break;
 							case 3:
 								redirect('Mkios');

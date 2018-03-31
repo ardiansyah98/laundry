@@ -113,7 +113,7 @@
     $('#table_kios_tbody').on('click', 'tr', function () 
     {
         var data = table.row( this ).data();
-        var link="<?php echo site_url()?>"+"Pkios/transaksi/"+data[1];
+        var link="<?php echo site_url()?>"+"Kios/transaksi/"+data[1];
         // alert(link);
         window.document.location = link;
     });

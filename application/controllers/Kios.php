@@ -54,9 +54,11 @@ class kios extends CI_Controller {
 			$jumlah_cucian=$this->input->post("jumlah_cucian");
 			$kode_paket=$this->generate_kode_paket($nama);
 
+			$waktu=date("H:i:s");
+
 			$data_paket=array("nama_pelanggan"=>$nama,
 						"kode_paket" => $kode_paket,
-						"tgl_masuk"=>$tanggal,
+						"tgl_masuk"=>$tanggal." ".$waktu,
 						"tlp_pelanggan"=>$tlp);
 			$id_paket=$this->DbCore->insert_get_id("paket",$data_paket);
 			$total_harga=0;
