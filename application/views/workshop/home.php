@@ -103,7 +103,7 @@
                   <th>Kode Paket</th>
                   <th>Kode Cucian</th>
                   <th>Nama Pelanggan</th>
-                  <th>Berat</th>
+                  <th>Qty</th>
                   <th>Tanggal Masuk</th>
                   <th>Aksi</th>
                 </tr>
@@ -138,7 +138,7 @@
                   <th>Kode Paket</th>
                   <th>Kode Cucian</th>
                   <th>Nama Pelanggan</th>
-                  <th>Berat</th>
+                  <th>Qty</th>
                   <th>Tanggal Masuk</th>
                   <th>Aksi</th>
                 </tr>
@@ -171,11 +171,11 @@
                 <thead>
                 <tr>
                  <th>No</th>
-                  <th>Nama Pelanggan</th>
-                  <!-- <th>Kode Paket</th> -->
+                  <th>Kode Paket</th>
                   <th>Kode Cucian</th>
+                  <th>Nama Pelanggan</th>
                   <th>Jenis Laundry</th>
-                  <th>Berat</th>
+                  <th>Qty</th>
                   <th>Tanggal Masuk</th>
                   <th>Aksi</th>
                 </tr>
@@ -203,7 +203,7 @@
 
   var prioritas=$("#prioritas").DataTable({
       'paging'      : true,
-      "order"       : [[ 3, "asc" ]],
+      "order"       : [[ 2, "asc" ]],
       'autoWidth'   : false,
       'ajax'        : {
                       "url"     : "<?php echo site_url()?>Workshop/spesial_list/Diterima=4",
@@ -228,7 +228,7 @@
 
 var express=$("#express").DataTable({
       'paging'      : true,
-      "order"       : [[ 3, "asc" ]],
+      "order"       : [[ 2, "asc" ]],
       'autoWidth'   : false,
       'ajax'        : {
                       "url"     : "<?php echo site_url()?>Workshop/spesial_list/Diterima=5",
@@ -253,7 +253,7 @@ var express=$("#express").DataTable({
 
 var semua=$("#semua").DataTable({
       'paging'      : true,
-      "order"       : [[ 3, "asc" ]],
+      "order"       : [[ 2, "asc" ]],
       'autoWidth'   : false,
       'ajax'        : {
                       "url"     : "<?php echo site_url()?>Workshop/semua_kecuali/Diterima=4-5",
@@ -262,8 +262,9 @@ var semua=$("#semua").DataTable({
                       },
       'columns'    :[
         {"data":"no"},
-        {"data":"nama_pelanggan"},
+        {"data":"kode_paket"},
         {"data":"id_transaksi"},
+        {"data":"nama_pelanggan"},
         {"data":"nama"},
         {"data":"berat"},
         {"data":"tgl_diterima"},
@@ -281,7 +282,7 @@ var semua=$("#semua").DataTable({
   $("#prioritas tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_dicuci/"+column.html();
         $.get(link);
         prioritas.ajax.reload();
@@ -291,7 +292,7 @@ var semua=$("#semua").DataTable({
   $("#express tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_dicuci/"+column.html();
         $.get(link);
         express.ajax.reload();
@@ -301,7 +302,7 @@ var semua=$("#semua").DataTable({
   $("#semua tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_dicuci/"+column.html();
         $.get(link);
         semua.ajax.reload();

@@ -42,7 +42,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div class="box box-primary">
+          <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Data Laundry</h3>
             </div>

@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      <!-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -20,7 +20,8 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> -->
+      <br>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -31,14 +32,14 @@
         </li>
         <li class="<?php if($this->uri->segment(2)=="list_transaksi"  ){echo "active";}?>">
           <a href="<?php echo site_url('Kios/list_transaksi/')?>" >
-            <i class="fa  fa-users"></i> <span>Belum Bayar</span>
+            <i class="fa   fa-align-center"></i> <span>List </span>
           </a>
         </li>
-        <li class="<?php if($this->uri->segment(2)=="ready_transaksi" ){echo "active";}?>">
+        <!-- <li class="<?php if($this->uri->segment(2)=="ready_transaksi" ){echo "active";}?>">
           <a href="<?php echo site_url('Kios/ready_transaksi/')?>" >
             <i class="fa  fa-check-square-o"></i> <span>Ready</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
           <a href="#">

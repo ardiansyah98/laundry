@@ -8,8 +8,7 @@ class kios extends CI_Controller {
 		parent::__construct();
 		$this->load->model('DbCore');
 		$this->load->model('DbKios');
-		 $this->load->helper('string');
-       
+		 $this->load->helper('string');  
 	}
 
 	public function index()
@@ -52,11 +51,12 @@ class kios extends CI_Controller {
 			$tanggal=$this->input->post("tanggal");
 			$jenis_cucian=$this->input->post("jenis_cucian");
 			$jumlah_cucian=$this->input->post("jumlah_cucian");
-			$kode_paket=$this->generate_kode_paket($nama);
+			$kode_paket=$this->generate_kode_paket();
 
 			$waktu=date("H:i:s");
 
 			$data_paket=array("nama_pelanggan"=>$nama,
+						"id_cabang" => $cabang->id_cabang,
 						"kode_paket" => $kode_paket,
 						"tgl_masuk"=>$tanggal." ".$waktu,
 						"tlp_pelanggan"=>$tlp);
@@ -87,15 +87,15 @@ class kios extends CI_Controller {
 			}
 			$update_harga["harga"]=$total_harga;
 			$this->DbCore->update_data("paket","id_paket",$id_paket,$update_harga);
-			redirect("Pkios/transaksi/$id_paket","refresh");		
+			redirect("kios/transaksi/$id_paket","refresh");		
 		}
 	}
 
-	function generate_kode_paket($nama){
+	function generate_kode_paket(){
 		$cabang=$this->session->userdata("cabang");
 		$time=date("ymjs");
 		$cab=$cabang->kode_cabang;
-		$kode=$cab.$time.substr($nama,4);
+		$kode=$cab.$time;
 		return $kode;
 	}
 
@@ -278,8 +278,16 @@ class kios extends CI_Controller {
 			$row[] = $trans->tlp_pelanggan;
 			$row[] = $trans->harga;
 			$row[] = $trans->tgl_masuk;
-			$row[] = $trans->status_pembayaran_paket;
-			$row[] = $trans->status_pengambilan_paket;
+
+			if($trans->status_pembayaran_paket == "Sudah")
+				$row[] = "<span class='label label-success'>Sudah</span>";
+			else
+ 				$row[] = "<span class='label label-warning'>Belum</span>";
+
+ 			if($trans->status_pengambilan_paket == "Sudah")
+				$row[] = "<span class='label label-success'>Sudah</span>";
+			else
+ 				$row[] = "<span class='label label-warning'>Belum</span>";
 
 			$data[] = $row;
 		}

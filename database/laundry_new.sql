@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2018 at 06:47 AM
+-- Generation Time: Apr 01, 2018 at 03:55 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -65,7 +65,7 @@ CREATE TABLE `diskon` (
 --
 
 INSERT INTO `diskon` (`id_diskon`, `nama_diskon`, `potongan_diskon`, `awal_diskon`, `akhir_diskon`, `syarat`, `kondisi`, `kuota`) VALUES
-(0, 'none', '0', '0000-00-00', '0000-00-00', '', '', 0),
+(0, 'none', '0', '0000-00-00', '0000-00-00', '', '', -7),
 (1, 'Grand Opening', 'persen/10', '2018-03-01', '2018-03-31', 'id_cabang', '1', 100);
 
 -- --------------------------------------------------------
@@ -184,6 +184,35 @@ CREATE TABLE `log_transaksi` (
   `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `log_transaksi`
+--
+
+INSERT INTO `log_transaksi` (`id`, `id_transaksi`, `jenis_update`, `status`, `id_user`, `waktu`) VALUES
+(1, 1, 'status_pembayaran', 'Sudah', 1, '2018-04-01 12:30:23'),
+(2, 2, 'status_pembayaran', 'Sudah', 1, '2018-04-01 12:30:23'),
+(3, 8, 'status_cucian', 'Proses', 2, '2018-04-01 13:00:52'),
+(4, 4, 'status_cucian', 'Proses', 2, '2018-04-01 13:00:54'),
+(5, 3, 'status_cucian', 'Proses', 2, '2018-04-01 13:01:01'),
+(6, 9, 'status_cucian', 'Proses', 2, '2018-04-01 13:01:03'),
+(7, 8, 'status_cucian', 'Selesai', 2, '2018-04-01 13:03:56'),
+(8, 8, 'status_cucian', 'Selesai', 2, '2018-04-01 13:03:58'),
+(9, 3, 'status_cucian', 'Selesai', 2, '2018-04-01 13:04:00'),
+(10, 3, 'status_cucian', 'Selesai', 2, '2018-04-01 13:04:02'),
+(11, 4, 'status_cucian', 'Selesai', 2, '2018-04-01 13:04:05'),
+(12, 9, 'status_cucian', 'Selesai', 2, '2018-04-01 13:04:09'),
+(13, 10, 'status_cucian', 'Proses', 2, '2018-04-01 13:36:42'),
+(14, 11, 'status_cucian', 'Proses', 2, '2018-04-01 13:37:21'),
+(15, 11, 'status_cucian', 'Proses', 2, '2018-04-01 13:37:23'),
+(16, 11, 'status_cucian', 'Selesai', 2, '2018-04-01 13:37:29'),
+(17, 1, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:15'),
+(18, 5, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:32'),
+(19, 6, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:34'),
+(20, 2, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:36'),
+(21, 7, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:39'),
+(22, 7, 'status_cucian', 'Proses', 2, '2018-04-01 13:39:43'),
+(23, 10, 'status_cucian', 'Selesai', 2, '2018-04-01 13:39:48');
+
 -- --------------------------------------------------------
 
 --
@@ -207,9 +236,12 @@ CREATE TABLE `paket` (
 --
 
 INSERT INTO `paket` (`id_paket`, `id_cabang`, `kode_paket`, `nama_pelanggan`, `tlp_pelanggan`, `harga`, `tgl_masuk`, `status_pembayaran_paket`, `status_pengambilan_paket`) VALUES
-(1, 1, 'PK0118032846', 'Ardiansyah', '085810140868', 16200, '2018-03-28', 'Belum', 'Belum'),
+(1, 1, 'PK0118032846', 'Ardiansyah', '085810140868', 16200, '2018-03-28', 'Sudah', 'Sudah'),
 (2, 1, 'PK0118032806', 'Suci', '085282185143', 58500, '2018-03-28', 'Belum', 'Belum'),
-(3, 1, 'PK0118032824', 'Rizkiyanto', '0855111888', 2700, '2018-03-28', 'Belum', 'Belum');
+(3, 1, 'PK0118032824', 'Rizkiyanto', '0855111888', 2700, '2018-03-28', 'Belum', 'Belum'),
+(4, 1, 'PK011804105', 'Khairul', '098798882111', 72000, '2018-04-01', 'Belum', 'Belum'),
+(5, 1, 'PK011804111', 'Idris', '02121212121', 62000, '2018-04-01', 'Belum', 'Belum'),
+(6, 1, 'PK011804112', 'COba', '0321031231', 33000, '2018-04-01', 'Belum', 'Belum');
 
 -- --------------------------------------------------------
 
@@ -225,11 +257,11 @@ CREATE TABLE `transaksi` (
   `diskon` int(11) NOT NULL,
   `id_user` int(3) NOT NULL,
   `id_cabang` int(3) NOT NULL,
-  `status_cucian` enum('Diterima','Proses','Selesai','Diambil') NOT NULL,
-  `tgl_diterima` datetime NOT NULL,
-  `tgl_diambil` datetime DEFAULT NULL,
+  `status_cucian` enum('Diterima','Proses','Disetrika','Selesai','Diambil') NOT NULL,
+  `tgl_diterima` date NOT NULL,
+  `tgl_diambil` date DEFAULT NULL,
   `status_pembayaran` enum('Belum','Sudah') NOT NULL DEFAULT 'Belum',
-  `tgl_bayar` datetime DEFAULT NULL,
+  `tgl_bayar` date DEFAULT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -238,11 +270,29 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_paket`, `jenis_laundry`, `berat`, `diskon`, `id_user`, `id_cabang`, `status_cucian`, `tgl_diterima`, `tgl_diambil`, `status_pembayaran`, `tgl_bayar`, `keterangan`) VALUES
-(1, 1, 1, 2, 1, 1, 1, 'Diterima', '2018-03-28 00:00:00', NULL, 'Belum', NULL, ''),
-(2, 1, 3, 3, 1, 1, 1, 'Diterima', '2018-03-28 00:00:00', NULL, 'Belum', NULL, ''),
-(3, 2, 23, 2, 1, 1, 1, 'Diterima', '2018-03-28 00:00:00', NULL, 'Belum', NULL, ''),
-(4, 2, 24, 1, 1, 1, 1, 'Diterima', '2018-03-28 00:00:00', NULL, 'Belum', NULL, ''),
-(5, 3, 1, 1, 1, 1, 1, 'Diterima', '2018-03-28 00:00:00', NULL, 'Belum', NULL, '');
+(1, 1, 1, 2, 1, 1, 1, 'Proses', '2018-03-28', NULL, 'Sudah', '2018-04-01', ''),
+(2, 1, 3, 3, 1, 1, 1, 'Proses', '2018-03-28', NULL, 'Sudah', '2018-04-01', ''),
+(3, 2, 23, 2, 1, 1, 1, 'Selesai', '2018-03-28', NULL, 'Belum', NULL, ''),
+(4, 2, 24, 1, 1, 1, 1, 'Selesai', '2018-03-28', NULL, 'Belum', NULL, ''),
+(5, 3, 1, 1, 1, 1, 1, 'Proses', '2018-03-28', NULL, 'Belum', NULL, ''),
+(6, 4, 3, 2, 0, 1, 1, 'Proses', '2018-04-01', NULL, 'Belum', NULL, ''),
+(7, 4, 3, 3, 0, 1, 1, 'Proses', '2018-04-01', NULL, 'Belum', NULL, ''),
+(8, 4, 14, 4, 0, 1, 1, 'Selesai', '2018-04-01', NULL, 'Belum', NULL, ''),
+(9, 4, 29, 2, 0, 1, 1, 'Selesai', '2018-04-01', NULL, 'Belum', NULL, ''),
+(10, 5, 4, 2, 0, 4, 1, 'Selesai', '2018-04-01', NULL, 'Belum', NULL, ''),
+(11, 5, 5, 3, 0, 4, 1, 'Selesai', '2018-04-01', NULL, 'Belum', NULL, ''),
+(12, 6, 1, 11, 0, 4, 1, 'Diterima', '2018-04-01', NULL, 'Belum', NULL, '');
+
+--
+-- Triggers `transaksi`
+--
+DELIMITER $$
+CREATE TRIGGER `Diskon_kuota` AFTER INSERT ON `transaksi` FOR EACH ROW BEGIN
+UPDATE diskon
+SET kuota = kuota-1 WHERE id_diskon=new.diskon;
+end
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -263,7 +313,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `id_cabang`) VALUES
-(1, 'aaaa', 'aaaa', '1', 1);
+(1, 'aaaa', 'aaaa', '1', 1),
+(2, 'workshop1', 'workshop1', '2', 1),
+(3, 'workshop2', 'workshop2', '2', 2),
+(4, 'kios1', 'kios1', '1', 1),
+(5, 'kios2', 'kios2', '1', 2);
 
 --
 -- Indexes for dumped tables
@@ -345,25 +399,25 @@ ALTER TABLE `jenis_laundry`
 -- AUTO_INCREMENT for table `log_transaksi`
 --
 ALTER TABLE `log_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `paket`
 --
 ALTER TABLE `paket`
-  MODIFY `id_paket` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_paket` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

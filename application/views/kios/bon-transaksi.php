@@ -142,6 +142,9 @@
           <hr>
           <!-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
           <div class="btn-group pull-right">
+            <?php 
+              
+            ?>
             <?php if($paket->status_pengambilan_paket!="Sudah"):?>
               <button type="button" class="btn btn-danger btn-lg " data-toggle="modal" data-target="#ambil" id="<?php echo $paket->kode_paket?>" onclick="ambil_semua(this.id)"><i class="fa fa-money"></i> Ambil Semua</button>
             <?php endif?>

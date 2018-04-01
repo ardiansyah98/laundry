@@ -104,7 +104,7 @@
                   <th>Kode Paket</th>
                   <th>Kode Cucian</th>
                   <th>Nama Pelanggan</th>
-                  <th>Berat</th>
+                  <th>Qty</th>
                   <th>Tanggal Masuk</th>
                   <th>Aksi</th>
                 </tr>
@@ -172,9 +172,9 @@
                 <thead>
                 <tr>
                  <th>No</th>
-                  <th>Nama Pelanggan</th>
-                  <!-- <th>Kode Paket</th> -->
+                  <th>Kode Paket</th>
                   <th>Kode Cucian</th>
+                  <th>Nama Pelanggan</th>
                   <th>Jenis Laundry</th>
                   <th>Berat</th>
                   <th>Tanggal Masuk</th>
@@ -263,8 +263,9 @@ var semua=$("#semua").DataTable({
                       },
       'columns'    :[
         {"data":"no"},
-        {"data":"nama_pelanggan"},
+        {"data":"kode_paket"},
         {"data":"id_transaksi"},
+        {"data":"nama_pelanggan"},
         {"data":"nama"},
         {"data":"berat"},
         {"data":"tgl_diterima"},
@@ -282,7 +283,7 @@ var semua=$("#semua").DataTable({
   $("#prioritas tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_selesai/"+column.html();
         $.get(link);
         row.hide();
@@ -293,7 +294,7 @@ var semua=$("#semua").DataTable({
   $("#express tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_selesai/"+column.html();
         $.get(link);
         row.hide();
@@ -304,7 +305,7 @@ var semua=$("#semua").DataTable({
   $("#semua tbody").on( 'click', 'button', function () {
         var row=$(this).closest("tr");
         var column=row.children("td").eq(2);
-        alert(column.html());
+        //alert(column.html());
         var link="<?php echo site_url()?>Workshop/set_selesai/"+column.html();
         $.get(link);
         row.hide();

@@ -47,7 +47,7 @@
     <section style="margin-top: 2%" class="content">
       <div class="row">
         <div class="col-xs-12 ">
-          <div class="box">
+          <div class="box box-info">
             <div class="box-body">
               <table id="table_kios" class="table table-hover table-bordered" cellspacing="0">
                   <thead>
@@ -87,7 +87,6 @@
 <script>
   $(function () {
     var table = $('#table_kios').DataTable({
-          "sScrollX": "100%",
           "autoWidth": false,
           "processing": true, 
           "serverSide": true, 
