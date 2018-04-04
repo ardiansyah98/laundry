@@ -33,6 +33,8 @@ class Mkios extends CI_Controller {
 		$this->load->view("kios/home-manager");
 	}
 
+	// gw lagi males ketemu error jadi data mkios masih statis blm pake session
+
 	function data_bulanan(){
 		// $data=$this->DbAdmin->get_bulanan()->num_rows();
 		$data = array();
