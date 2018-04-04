@@ -39,6 +39,11 @@
             <i class="fa  fa-check-square-o"></i> <span>Ready</span>
           </a>
         </li>
+        <li class="<?php if($this->uri->segment(2)=="strika" ){echo "active";}?>">
+          <a href="<?php echo site_url('Kios/strika/')?>" >
+            <i class="fa  fa-wpforms" aria-hidden="true"></i> <span>Ready</span>
+          </a>
+        </li>
         <!-- <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
           <a href="#">

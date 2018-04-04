@@ -14,6 +14,10 @@ class DbCore extends CI_Model
 		$this->db->where($kolom2,$data2);
 		return $this->db->get($table);
 	}
+	public function get_data_by_array($table,$arr){
+		$this->db->where($arr);
+		return $this->db->get($table);
+	}
 
 	public function get_like_data_1param($table,$kolom,$data){
 		$this->db->like($kolom,$data);
@@ -62,6 +66,10 @@ class DbCore extends CI_Model
 	public function delete_data($table,$kolom,$id){
 		$this->db->where($kolom, $id);
 		$this->db->delete($table);
+	}
+
+	public function get_data_table($table){
+		return $this->db->get($table);
 	}
 
 

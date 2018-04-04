@@ -24,11 +24,11 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="<?php if($this->uri->segment(2)=="input_transaksi" || $this->uri->segment(2)=="" ){echo "active";}?>">
+       <!--  <li class="<?php if($this->uri->segment(2)=="input_transaksi" || $this->uri->segment(2)=="" ){echo "active";}?>">
           <a href="<?php echo site_url('Kios/input_transaksi/')?>" >
             <i class="fa  fa-user-plus"></i> <span>Input </span>
           </a>
-        </li>
+        </li> -->
         <li class="<?php if($this->uri->segment(2)=="list_transaksi"  ){echo "active";}?>">
           <a href="<?php echo site_url('Kios/list_transaksi/')?>" >
             <i class="fa  fa-users"></i> <span>Belum Bayar</span>
@@ -37,6 +37,11 @@
         <li class="<?php if($this->uri->segment(2)=="ready_transaksi" ){echo "active";}?>">
           <a href="<?php echo site_url('Kios/ready_transaksi/')?>" >
             <i class="fa  fa-check-square-o"></i> <span>Ready</span>
+          </a>
+        </li>
+        <li class="<?php if($this->uri->segment(2)=="strika" ){echo "active";}?>">
+          <a href="<?php echo site_url('Kios/strika/')?>" >
+            <i class="fa  fa-wpforms" aria-hidden="true"></i> <span>Ready</span>
           </a>
         </li>
         <!-- <li class="header">MAIN NAVIGATION</li>

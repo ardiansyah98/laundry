@@ -21,7 +21,7 @@
 <?php $this->load->view("template/navbar");?>
 
 <!-- side bar -->
-<?php $this->load->view("template/sidebar");?>
+<?php $this->load->view("kios/sidebar-kios");?>
   
   <!-- Left side column. contains the logo and sidebar -->
 
@@ -63,27 +63,7 @@
               <h4><?php echo $paket->tlp_pelanggan?> (No. Tlp)</h4>
               <h4><?php echo $paket->tgl_masuk?> (Tgl Masuk)</h4>
         </div>
-        <!-- /.col -->
-        <!-- <div class="col-sm-4 invoice-col">
-          To
-          <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
-          </address>
-        </div>
-
-        <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
-          <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
-        </div>
-      </div> -->
-      <!-- /.row -->
+     
 
       <!-- Table row -->
       <div class="row">
@@ -97,6 +77,8 @@
               <th>Harga Satuan</th>
               <th>Diskon</th>
               <th>Jumlah Harga</th>
+              <th>Tanggal Dibayar</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
             </thead>
@@ -109,14 +91,17 @@
               <td>Rp.<?php echo number_format($row->harga)?></td>
               <td>Rp.<?php echo number_format($row->jumlah_diskon)?></td>
               <td>Rp.<?php echo number_format($row->jumlah_harga)?></td>
+              <td><?php echo $row->tgl_bayar?></td>
+              <td><?php echo $row->status_cucian?>;</td>
               <td>
                 <div class="btn-group">
-                  <?php if($row->status_cucian=="Selesai"):?>
-                    <button type="button" class="btn btn-danger btn-sm "><i class="fa fa-money"></i> Ambil</button>\
-                  <?php endif?>
-                  <?php if($row->status_pembayaran=="Belum"):?>
-                    <button type="button" class="btn btn-success btn-sm " data-toggle="modal" data-target="#bayar" id="<?php echo $row->id_transaksi?>" onclick="bayar_satu(this.id)" ><i class="fa fa-money"></i> Bayar</button>
-                  <?php endif?>
+                  
+              <!--       <button type="button" class="btn btn-warning btn-sm " <?php if($row->status_cucian!="Selesai")echo 'disabled'?> data-toggle="modal" data-target="#ambil"><i class="fa fa-money"></i> Strika</button> -->               
+                    <button type="button" class="btn btn-danger btn-sm " <?php if($row->status_cucian != "Selesai")echo 'disabled'?> data-toggle="modal" data-target="#ambil"><i class="fa fa-money" ></i> Ambil</button>
+                  
+                  
+                    <button type="button" class="btn btn-success btn-sm " <?php if($row->status_pembayaran != 'Belum'){echo 'disabled';} ?> data-toggle="modal" data-target="#bayar" id="<?php echo $row->id_transaksi?>" onclick="bayar_satu(this.id)" ><i class="fa fa-money"></i> Bayar</button>
+                  
                 </div>
               </td>
             </tr>
@@ -160,10 +145,11 @@
           <hr>
           <!-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
           <div class="btn-group pull-right">
-              <button type="button" class="btn btn-danger btn-lg "><i class="fa fa-money"></i> Ambil Semua</button>
-              <?php if($paket->status_pembayaran_paket!="Sudah"):?>
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#bayar" id="<?php echo $paket->kode_paket?>" onclick="bayar_semua(this.id)"><i class="fa fa-money"></i> Bayar Semua</button>
-              <?php endif?>
+              <button type="button" class="btn btn-danger btn-lg " data-toggle="modal" data-target="#ambil" id="<?php echo $paket->kode_paket?>" onclick="ambil_semua(this.id)" <?php if($paket->status_pengambilan_paket != "Sudah")echo 'disabled'?> ><i class="fa fa-money"></i> Ambil Semua</button>
+            
+        
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#bayar" id="<?php echo $paket->kode_paket?>" onclick="bayar_semua(this.id)" <?php if($paket->status_pembayaran_paket != "Sudah")echo 'disabled'?>><i class="fa fa-money"></i> Bayar Semua</button>
+              
           </div>
          <!--  <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
@@ -176,11 +162,6 @@
     <div class="modal  fade" id="bayar">
       <div class="modal-dialog">
         <div class="modal-content">
-          <!-- <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Success Modal</h4>
-          </div> -->
           <div class="modal-body">
             <h4>Jumlah Yang Harus Dibayarkan <strong id="modal-harga"></strong></h4>
             <h5>kasir : <?php echo $user->username;?></h5>
@@ -188,6 +169,21 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-danger pull-left " data-dismiss="modal">Batal</button>
             <a type="button" class="btn btn-success" href="" id="modal-btn-bayar" >Bayar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal  fade" id="ambil">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>Ambil Cucian <strong id="modal-ambil"></strong></h4>
+            <h5>kasir : <?php echo $user->username;?></h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger pull-left " data-dismiss="modal">Batal</button>
+            <a type="button" class="btn btn-success" href="" id="modal-btn-ambil" >Ambil</a>
           </div>
         </div>
       </div>
@@ -210,7 +206,7 @@
   function bayar_satu(id){
     for (var i = 0; i < data_cucian.length; i++) {
       if(data_cucian[i].id_transaksi==id){
-        var link="<?php echo site_url()?>"+"Pkios/pembayaran_transaksi/single-"+id;
+        var link="<?php echo site_url()?>"+"Kios/pembayaran_transaksi/single-"+id;
         $("#modal-harga").html("Rp."+data_cucian[i].harga*data_cucian[i].berat);
         $("#modal-btn-bayar").attr("href",link);
       }
@@ -218,10 +214,32 @@
   }
 
   function bayar_semua(id){
-        var link="<?php echo site_url()?>"+"Pkios/pembayaran_transaksi/all-"+id;
+        var link="<?php echo site_url()?>"+"Kios/pembayaran_transaksi/all-"+id;
         var sisa=$("#belum-dibayar").text();
         $("#modal-harga").html(sisa);
         $("#modal-btn-bayar").attr("href",link);
+  }
+
+  function ambil_satu(id){
+    for (var i = 0; i < data_cucian.length; i++) {
+      if(data_cucian[i].id_transaksi==id){
+        var link="<?php echo site_url()?>"+"Kios/ambil_transaksi/single-"+id;
+        $("#modal-ambil").html("Rp."+data_cucian[i].nama+" Sejumlah "+data_cucian[i].berat);
+        $("#modal-btn-ambil").attr("href",link);
+      }
+    }
+  }
+
+  function ambil_semua(id){
+        var link="<?php echo site_url()?>"+"Kios/ambil_transaksi/all-"+id;
+        var cucian="";
+        for (var i = 0; i < data_cucian.length; i++) {
+          if(data_cucian.status_cucian!="Diambil"){
+            cucian=cucian+data_cucian[i].nama+",";
+          }
+        }
+        $("#modal-ambil").html(cucian);
+        $("#modal-btn-ambil").attr("href",link);
   }
 
 

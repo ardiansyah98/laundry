@@ -24,18 +24,18 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="<?php if($this->uri->segment(2)=="input_transaksi" || $this->uri->segment(2)=="" ){echo "active";}?>">
-          <a href="<?php echo site_url('Kios/input_transaksi/')?>" >
-            <i class="fa  fa-user-plus"></i> <span>Input </span>
+        <li class="<?php if($this->uri->segment(2)=="home" || $this->uri->segment(2)=="" ){echo "active";}?>">
+          <a href="<?php echo site_url('Workshop/home/')?>" >
+            <i class="fa   fa-align-center"></i> <span>List Cucian </span>
           </a>
         </li>
-        <li class="<?php if($this->uri->segment(2)=="list_transaksi"  ){echo "active";}?>">
-          <a href="<?php echo site_url('Kios/list_transaksi/')?>" >
-            <i class="fa  fa-users"></i> <span>Belum Bayar</span>
+        <li class="<?php if($this->uri->segment(2)=="selesai_cuci"  ){echo "active";}?>">
+          <a href="<?php echo site_url('Workshop/selesai_cuci/')?>" >
+            <i class="fa  fa-users"></i> <span>Selesai Cuci</span>
           </a>
         </li>
-        <li class="<?php if($this->uri->segment(2)=="ready_transaksi" ){echo "active";}?>">
-          <a href="<?php echo site_url('Kios/ready_transaksi/')?>" >
+        <li class="<?php if($this->uri->segment(2)=="ready" ){echo "active";}?>">
+          <a href="<?php echo site_url('Workshop/ready/')?>" >
             <i class="fa  fa-check-square-o"></i> <span>Ready</span>
           </a>
         </li>
