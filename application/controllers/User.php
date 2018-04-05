@@ -7,13 +7,14 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('DbCore');
-		 $this->load->helper('string');
-       
+		$this->load->helper('string');
 	}
+
 	public function index()
 	{
 		$this->login();
 	}
+
 	function login(){
 		$user=$this->input->post('user');
 			// $pass=md5($this->input->post('pass'));
