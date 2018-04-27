@@ -4,6 +4,22 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>laundry | Dashboard</title>
+  <style>
+  .index-color{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    margin: 0;
+    background-color: rgba(255,255,255,0.1) !important;
+    width: 150px;
+  }
+
+  .index-list{
+    background: none !important;
+    border: none !important;
+    font-weight: bold;
+  }
+  </style>
 
 <!-- head css + js -->
 <?php $this->load->view("template/head");?>
@@ -30,13 +46,10 @@
       <!-- heading -->
 
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Home
+        <small>Grafik</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+      
     </section>
 
     <section class="content">
@@ -78,10 +91,25 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
+            
             <div class="box-body">
               <div class="chart">
                 <canvas id="keuangan" style="height:250px"></canvas>
               </div>
+
+              
+                <div class="well well-sm class index-color" >
+                  <div class="input-group">
+                    <span class="input-group-addon" style="background-color: rgba(0, 175, 239,0.5);border: none;"></span>
+                    <input type="text" class="form-control input-sm index-list" value="Pemasukan" readonly>
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-addon" style="background-color: rgba(236, 50, 83,0.5);border: none;"></span>
+                    <input type="text" class="form-control input-sm index-list" value="Pengeluaran" readonly>
+                  </div>
+                </div>
+              
             </div>
             <!-- /.box-body -->
           </div>
@@ -106,6 +134,7 @@
               <div class="chart">
                 <canvas id="pieChart" style="height:250px"></canvas>
               </div>
+              <div class="row" id="list-nama-cucian"></div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -127,6 +156,29 @@
               <div class="chart">
                 <canvas id="barChart" style="height:230px"></canvas>
               </div>
+
+              <!-- <div class="well well-sm class index-color" > -->
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-addon" style="background-color: #4abdac;border: none !important;"></span>
+                    <input type="text" class="form-control input-sm index-list" value="Terima" readonly>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-addon" style="background-color: #ec3253;border: none !important;"></span>
+                    <input type="text" class="form-control input-sm index-list" value="Kasir" readonly>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-addon" style="background-color: #00afef;border: none !important;"></span>
+                    <input type="text" class="form-control input-sm index-list" value="Strika" readonly>
+                  </div>
+                </div>
+
+
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -148,16 +200,14 @@
 
 
 <script src="<?php echo base_url('assets/adminlte/bower_components/chart.js/Chart.js')?>"></script>
+<!-- <script src="<?php echo base_url('assets/js/chart-mkios.js')?>"></script> -->
+<!-- <?php $this->load->view("kios/chart.js")?> -->
+
 
 <script>
 
-  /*
-     * LINE CHART
-     * ----------
-     */
-    //LINE randomly generated data
-  
-    var data_bulanan;
+
+var data_bulanan;
 
     var areaChartCanvas = $('#areaChart').get(0).getContext('2d');
     // var areaChartCanvas=document.getElementById("areaChart").getContext('2d');
@@ -178,7 +228,7 @@
             // pointHighlightStroke: 'rgba(60,141,188,1)',
             data                : [3,4,5,2,7,6,3]
           }]
-      }
+      };
 
      
 
@@ -219,7 +269,7 @@
       maintainAspectRatio     : true,
       //Boolean - whether to make the chart responsive to window resizing
       responsive              : true
-    }
+    };
     
 
     var link="<?php echo site_url('Mkios/data_bulanan/')?>";
@@ -250,10 +300,10 @@
           {
             label               : 'Pengeluaran',
             fillColor           : 'rgba(236, 50, 83,0.5)',
-            data                : [1000000,500000,2000000,500000,200000,1000000,0,0]
+            data                : []
           },
           ]
-      }
+      };
 
     var keuanganlink="<?php echo site_url('Mkios/data_keuangan/')?>";
     $.get(keuanganlink,function(result){
@@ -261,6 +311,7 @@
               var data=JSON.parse(result);
               
               datakeuangan.datasets[0].data=data.pemasukan;
+              datakeuangan.datasets[1].data=data.pengeluaran;
               console.log("keu :"+datakeuangan.datasets[0].data);
               keuangan.Line(datakeuangan, areaChartOptions);
               // areaChart.update();
@@ -378,6 +429,10 @@
         barChart.Bar(datapegawai, barChartOptions);
 
     });
+
+
+
+  
 
 
     

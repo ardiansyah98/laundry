@@ -64,6 +64,11 @@ class DbAdmin extends CI_Model
 		$this->db->join("jenis_laundry","transaksi.jenis_laundry=jenis_laundry.id");
 		return $this->db->get();
 	}
+	function get_pengeluaran($cabang,$kolom,$format,$data){
+		$this->db->where("id_cabang",$cabang);
+		$this->db->where("DATE_FORMAT($kolom,$format)", "$data");
+		return $this->db->get("pengeluaran");
+	}
 
 
 

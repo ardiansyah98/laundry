@@ -15,16 +15,24 @@
 </style>
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   
   <!-- nav bar -->
 <?php $this->load->view("template/navbar");?>
 
 <!-- side bar -->
-<?php $this->load->view("kios/sidebar-kios");?>
-  
-  <!-- Left side column. contains the logo and sidebar -->
+<!-- <?php $this->load->view("kios/sidebar-kios");?> -->
+
+
+<?php
+$user=$this->session->userdata("user");
+if($user->level==3){
+  $this->load->view("kios/sidebar-mkios");
+}else{
+  $this->load->view("kios/sidebar-kios");
+}
+?>
 
 
   <!-- Content Wrapper. Contains page content -->

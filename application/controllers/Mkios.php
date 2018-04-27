@@ -20,7 +20,7 @@ class Mkios extends CI_Controller {
 
 	function check_user(){
 		$user=$this->session->userdata("user");
-		if($user->level == 1 || $user->level == 3){
+		if($user->level == 3 || $user->level == 5){
 			return $user;
 		}else{
 			redirect("User/logout");
@@ -28,8 +28,8 @@ class Mkios extends CI_Controller {
 	}
 
 	function home(){
-		// $user=$this->check_user();
-		// $cabang=$this->session->userdata("cabang");
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
 		$this->load->view("kios/home-manager");
 	}
 
@@ -57,8 +57,8 @@ class Mkios extends CI_Controller {
 			$jumlah=$this->DbAdmin->get_by_date_kolom("transaksi","1","tgl_diterima","'%Y-%m'",$bulan,"jenis_laundry",$row->id)->num_rows();
 			$item=array(
 					'value' 	=>$jumlah,
-			        'color'     => '#d2d6de',
-			        'highlight' => '#d2d6de',
+			        'color'     => $this->get_random_color(),
+			        'highlight' => $this->get_random_color(),
 			        'label'    =>  $row->nama
 			      );
 			$data[]=(object)$item;	
@@ -66,9 +66,17 @@ class Mkios extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	function get_random_color(){
+		$color="#";
+		for ($i=0; $i <3 ; $i++) { 
+			$color .= str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+		}
+		return $color;
+	}
+
 	function get_data_pegawai(){
 		$data=array();
-		$pegawai=$this->DbCore->get_data_1param("user","id_cabang","1")->result();
+		$pegawai=$this->DbCore->get_data_2param("user","id_cabang","1","level","1")->result();
 		foreach ($pegawai as $row) {
 			$item=array();
 		$item['terima']=$this->DbCore->get_data_2param("transaksi","status_cucian","Diterima","id_user",$row->id_user)->num_rows();
@@ -83,23 +91,100 @@ class Mkios extends CI_Controller {
 	}
 
 	function data_keuangan(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
 		$data = array();
 		$year=date("Y-");
 		$pemasukan=array();
-		for ($i=0; $i <12 ; $i++) { 
+		// $pengeluaran=array();
+		for ($i=1; $i <13 ; $i++) { 
 			$bulan=date("Y-m",strtotime($year.$i));
-			$transaksi=$this->DbAdmin->get_pemasukan("1","tgl_diterima","'%Y-%m'",$bulan)->result();
-			$jumlah=0;
+			$transaksi=$this->DbAdmin->get_pemasukan($cabang->id_cabang,"tgl_diterima","'%Y-%m'",$bulan)->result();
+			$belanja=$this->DbAdmin->get_pengeluaran($cabang->id_cabang,"tanggal","'%Y-%m'",$bulan)->result();
+			$jum_keluar=0;
+			$jum_masuk=0;
 			foreach ($transaksi as $row) {
 				$harga=$row->berat*$row->harga;
-				$jumlah+=$harga;
+				$jum_masuk+=$harga;
 			}
-			$pemasukan[]=$jumlah;
+			
+			foreach ($belanja as $row2) {
+				$cum=$row2->jumlah_pengeluaran;
+				$jum_keluar+=$cum;
+			}
+			$pengeluaran[]=$jum_keluar;
+			$pemasukan[]=$jum_masuk;
+			
 		}
+
 		$data['pemasukan']=$pemasukan;
+		$data['pengeluaran']=$pengeluaran;
+
 		echo json_encode((object)$data);
 	}
-	
+
+	function pengeluaran(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		$this->load->view("kios/pengeluaran");
+	}
+
+	function list_pengeluaran(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		
+		$filter=$this->input->get("filter");
+		if($filter!="all"){
+			$year=date("Y-");
+			$bulan=date("Y-m",strtotime($year.$filter));
+
+			$data=$this->DbAdmin->get_by_date("pengeluaran",$cabang->id_cabang,"tanggal","'%Y-%M'",$bulan)->result();
+			echo json_encode($data);
+			// echo $bulan;
+		}else{
+			$data=$this->DbCore->get_data_1param("pengeluaran","id_cabang",$cabang->id_cabang)->result();
+			echo json_encode($data);
+		}
+		
+	}
+
+	function input_pengeluaran(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		$data['nama_pengeluaran']=$this->input->post("pengeluaran");
+		$data['tanggal']=$this->input->post("tanggal");
+		$data['jumlah_pengeluaran']=$this->input->post("jumlah");
+		$data['keterangan']=$this->input->post("keterangan");
+		$data['id_cabang']=$cabang->id_cabang;
+		$data['id_user']=$user->id_user;
+		$this->DbCore->insert_data("pengeluaran",$data);
+		echo "<script>alert('data berhasil ditambahkan')</script>";
+		redirect("Mkios/pengeluaran");
+	}
+
+	function list_akun(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		$index= array('id_cabang' => $cabang->id_cabang,
+						'level'=>'1',
+						'status'=>'hidup' );
+		$list=$this->DbCore->get_data_by_array("user",$index)->result();
+		$data['users']=$list;
+		$this->load->view("kios/list-akun",$data);
+	}
+
+	function tambah_akun(){
+		$user=$this->check_user();
+		$cabang=$this->session->userdata("cabang");
+		$data['username']=$this->input->post("username");
+		$data['password']=$this->input->post("password");
+		$data['id_cabang']=$cabang->id_cabang;
+		$data['level']='1';
+		$this->DbCore->insert_data("user",$data);
+		redirect("Mkios/list_akun");
+	}
+
+
 	
 	
 
